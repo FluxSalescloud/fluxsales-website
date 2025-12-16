@@ -127,9 +127,16 @@
         }
         
         .hero-content {
-            max-width: 650px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             position: relative;
             z-index: 1;
+        }
+        
+        .hero-text {
+            max-width: 650px;
         }
         
         .hero h1 {
@@ -149,6 +156,25 @@
             font-size: 1.2rem;
             margin-bottom: 30px;
             color: #555;
+        }
+        
+        .hero-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+        }
+        
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
         }
         
         .cta-button {
@@ -236,25 +262,100 @@
             color: var(--dark-green);
         }
         
-        /* Google Cloud Section */
-        .google-cloud {
+        /* Architecture Section */
+        .architecture {
             padding: 100px 0;
             background-color: var(--light-green);
             position: relative;
             overflow: hidden;
         }
         
-        .google-cloud::before {
+        .architecture::before {
             content: '';
             position: absolute;
             top: -100px;
-            right: -100px;
+            left: -100px;
             width: 400px;
             height: 400px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 200 200"><rect fill="%232E7D32" width="200" height="200"/><path fill="%234CAF50" d="M42,-57.1C53.3,-48.5,60.2,-33.7,65.7,-18.1C71.2,-2.5,75.4,13.8,70.7,26.9C66,40,52.5,49.9,38.3,57.1C24.1,64.3,9.2,68.8,-4.7,66.9C-18.6,65,-32.3,56.7,-44.9,46.8C-57.5,36.9,-69,25.4,-73.8,11.3C-78.5,-2.8,-76.5,-19.5,-68.1,-32.5C-59.7,-45.5,-44.9,-54.9,-29.7,-61.8C-14.5,-68.6,1.1,-72.9,16.6,-70.8C32.1,-68.6,47.4,-60,42,-57.1Z" transform="translate(100 100)" /></svg>') no-repeat;
             background-size: cover;
             opacity: 0.03;
-            transform: rotate(45deg);
+            transform: rotate(-45deg);
+        }
+        
+        .architecture-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .architecture-diagram {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+            border: 2px solid rgba(76, 175, 80, 0.1);
+        }
+        
+        .diagram-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .diagram-node {
+            background: var(--light-green);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid var(--primary-green);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        
+        .diagram-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.15);
+        }
+        
+        .diagram-node h4 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .node-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+        
+        .diagram-connections {
+            position: relative;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .connection-line {
+            width: 100%;
+            height: 3px;
+            background: var(--primary-green);
+            opacity: 0.3;
+        }
+        
+        /* Google Cloud Section */
+        .google-cloud {
+            padding: 100px 0;
+            background-color: var(--white);
         }
         
         .google-cloud-content {
@@ -262,8 +363,6 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            position: relative;
-            z-index: 1;
         }
         
         .google-cloud-text h2 {
@@ -276,9 +375,17 @@
             text-align: center;
         }
         
-        .google-cloud-image img {
-            max-width: 100%;
+        .google-cloud-image .cloud-graphic {
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 25%, #FBBC05 50%, #EA4335 75%);
+            width: 100%;
+            height: 300px;
             border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
             box-shadow: var(--shadow);
         }
         
@@ -290,7 +397,7 @@
         }
         
         .tech-tag {
-            background: var(--white);
+            background: var(--light-green);
             padding: 10px 20px;
             border-radius: 50px;
             font-weight: 500;
@@ -368,6 +475,13 @@
         
         .footer-links li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links i {
+            margin-right: 10px;
+            width: 20px;
         }
         
         .footer-links a {
@@ -389,13 +503,22 @@
         }
         
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-text {
+                max-width: 100%;
+            }
+            
             .google-cloud-content {
                 grid-template-columns: 1fr;
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
         }
         
@@ -427,11 +550,15 @@
             }
             
             .hero h1 {
-                font-size: 2.3rem;
+                font-size: 2.5rem;
             }
             
             .section-title h2 {
                 font-size: 2.2rem;
+            }
+            
+            .diagram-container {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -441,11 +568,15 @@
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
-            .solution, .google-cloud {
+            .solution, .architecture, .google-cloud {
                 padding: 70px 0;
+            }
+            
+            .architecture-diagram {
+                padding: 25px;
             }
         }
     </style>
@@ -465,6 +596,7 @@
                 
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#solution">Solution</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
                     <li><a href="#google-cloud">Google Cloud</a></li>
                     <li><a href="#stats">Results</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -478,9 +610,14 @@
         <div class="hero-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1>Empowering Restaurants with <span>Google Cloud</span></h1>
-                <p>FluxSales is a growth platform built on Google Cloud that helps restaurants and food & beverage SMEs in Mexico centralize their online operations, boost customer loyalty, and increase direct sales.</p>
-                <a href="#solution" class="cta-button">Explore Our Solution</a>
+                <div class="hero-text">
+                    <h1>Empowering Restaurants with <span>Google Cloud</span></h1>
+                    <p>FluxSales is a growth platform built on Google Cloud that helps restaurants and food & beverage SMEs in Mexico centralize their online operations, boost customer loyalty, and increase direct sales.</p>
+                    <a href="#solution" class="cta-button">Explore Our Solution</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://fluxsales.co/hs-fs/hubfs/ChatGPT%20Image%2014%20ago%202025%2c%2007_38_49%20a.m..png?width=1024&height=1536&name=ChatGPT%20Image%2014%20ago%202025%2c%2007_38_49%20a.m..png" alt="FluxSales Platform - Restaurant Growth Solution">
+                </div>
             </div>
         </div>
     </section>
@@ -521,6 +658,92 @@
         </div>
     </section>
 
+    <!-- Architecture Section -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <div class="section-title">
+                <h2>Google Cloud Architecture</h2>
+                <p>Our solution is built on a modern, scalable architecture using Google Cloud services</p>
+            </div>
+            
+            <div class="architecture-diagram">
+                <h3 style="text-align: center; color: var(--dark-green); margin-bottom: 30px;">FluxSales Platform Architecture</h3>
+                
+                <div class="diagram-container">
+                    <!-- Frontend Layer -->
+                    <div class="diagram-node">
+                        <div class="node-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4>Frontend Layer</h4>
+                        <p>React-based web application & mobile interfaces for restaurants and customers</p>
+                    </div>
+                    
+                    <div class="diagram-connections">
+                        <div class="connection-line"></div>
+                    </div>
+                    
+                    <!-- API Gateway -->
+                    <div class="diagram-node">
+                        <div class="node-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>API Gateway</h4>
+                        <p>Cloud Endpoints managing REST APIs, authentication, and request routing</p>
+                    </div>
+                    
+                    <div class="diagram-connections">
+                        <div class="connection-line"></div>
+                    </div>
+                    
+                    <!-- Microservices -->
+                    <div class="diagram-node">
+                        <div class="node-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h4>Microservices</h4>
+                        <p>Cloud Run containers for order processing, delivery management, and loyalty services</p>
+                    </div>
+                    
+                    <div class="diagram-connections">
+                        <div class="connection-line"></div>
+                    </div>
+                    
+                    <!-- Data Layer -->
+                    <div class="diagram-node">
+                        <div class="node-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Data Layer</h4>
+                        <p>Cloud SQL, Firestore, and BigQuery for transactional and analytical data</p>
+                    </div>
+                    
+                    <div class="diagram-connections">
+                        <div class="connection-line"></div>
+                    </div>
+                    
+                    <!-- Analytics -->
+                    <div class="diagram-node">
+                        <div class="node-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>Analytics & AI</h4>
+                        <p>BigQuery analytics and AI/ML models for customer insights and predictions</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; text-align: center;">
+                    <div class="tech-tag">Cloud Run</div>
+                    <div class="tech-tag">Cloud SQL</div>
+                    <div class="tech-tag">Firestore</div>
+                    <div class="tech-tag">BigQuery</div>
+                    <div class="tech-tag">Cloud Endpoints</div>
+                    <div class="tech-tag">Cloud Storage</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Google Cloud Section -->
     <section class="google-cloud" id="google-cloud">
         <div class="container">
@@ -535,14 +758,13 @@
                         <div class="tech-tag">Google Workspace</div>
                         <div class="tech-tag">Cloud Compute</div>
                         <div class="tech-tag">Cloud Storage</div>
-                        <div class="tech-tag">BigQuery</div>
+                        <div class="tech-tag">BigQuery Analytics</div>
                         <div class="tech-tag">Cloud Functions</div>
                     </div>
                 </div>
                 
                 <div class="google-cloud-image">
-                    <!-- This is a placeholder for Google Cloud graphic -->
-                    <div style="background: linear-gradient(135deg, #4285F4 0%, #34A853 25%, #FBBC05 50%, #EA4335 75%); width: 100%; height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">
+                    <div class="cloud-graphic">
                         Google Cloud Ecosystem
                     </div>
                 </div>
@@ -589,6 +811,7 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#solution">Our Solution</a></li>
+                        <li><a href="#architecture">Architecture</a></li>
                         <li><a href="#google-cloud">Google Cloud</a></li>
                         <li><a href="#stats">Results</a></li>
                         <li><a href="https://fluxsales.tech" target="_blank">Website</a></li>
@@ -601,6 +824,8 @@
                         <li><i class="fas fa-envelope"></i> sebastian@fluxsales.tech</li>
                         <li><i class="fas fa-globe"></i> fluxsales.tech</li>
                         <li><i class="fas fa-map-marker-alt"></i> Serving Mexico</li>
+                        <li><i class="fas fa-users"></i> Target: Small Business</li>
+                        <li><i class="fas fa-utensils"></i> Industry: Food & Restaurants</li>
                     </ul>
                 </div>
             </div>
@@ -647,6 +872,29 @@
                     });
                 }
             });
+        });
+        
+        // Add animation to diagram nodes on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe diagram nodes
+        document.querySelectorAll('.diagram-node').forEach(node => {
+            node.style.opacity = '0';
+            node.style.transform = 'translateY(20px)';
+            node.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(node);
         });
     </script>
 </body>
